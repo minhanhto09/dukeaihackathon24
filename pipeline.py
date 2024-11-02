@@ -208,7 +208,7 @@ if __name__ == "__main__":
     
     # Generate schedule
     schedule = scheduler.generate_schedule(
-        ics_file_path='academic_calendar.ics',
+        ics_file_path='data/calendar.ics',
         date=today,
         health_data=health_data
     )
