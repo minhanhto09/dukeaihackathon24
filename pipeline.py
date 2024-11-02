@@ -195,8 +195,18 @@ class AcademicAdaptiveScheduler:
             "constraints": json.dumps(constraints if constraints else {})
         })
         
-        return json.loads(schedule_response)
-    
+        # Debugging: print the raw response
+        print("Schedule Response:", schedule_response)  # Print to check the content
+
+        if not schedule_response:
+            print("Error: The LLM returned an empty response.")
+            return {}  # Or handle as appropriate
+        try:
+            return json.loads(schedule_response)
+        except json.JSONDecodeError:
+            print("Error: schedule_response is not valid JSON.")
+            return {}  # Handle the error or return an empty dictionary
+
     def update_task_completion(self, task_type: str, subject: str, estimated_time: float, actual_time: float):
         """Update task completion history"""
         self.time_estimator.update_task_time(task_type, subject, estimated_time, actual_time)
