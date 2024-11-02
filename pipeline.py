@@ -2,6 +2,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from datetime import datetime, timedelta
+import pytz
 import json
 import os
 import ics
@@ -160,10 +161,12 @@ class AcademicAdaptiveScheduler:
         # Parse calendar events
         calendar_events = self.parse_ics_calendar(ics_file_path)
         
-        # Filter and organize deadlines
-        start_of_week = date - timedelta(days=date.weekday())
+        # Make start_of_week and end_of_week timezone-aware
+        timezone = pytz.UTC
+        start_of_week = timezone.localize(date - timedelta(days=date.weekday()))
         end_of_week = start_of_week + timedelta(days=6)
         
+        # Filter and organize deadlines
         deadlines = [
             event for event in calendar_events 
             if event['is_deadline'] and start_of_week <= event['start'] <= end_of_week
