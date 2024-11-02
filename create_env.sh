@@ -26,11 +26,8 @@ source $path_to_this_environment"/bin/activate"
 
 # Install dependencies:
 pip install --upgrade pip
-pip install -r $path_to_env_requirements/"lint.txt"
-pip install -r $path_to_env_requirements/"general.txt"
-pip install -r $path_to_env_requirements/"langchain.txt"
-pip install -r $path_to_env_requirements/"transformers.txt"
-pip install -r $path_to_env_requirements/"miscellaneous.txt"
+pip install -r $path_to_env_requirements/"requirements.txt"
+
 
 # Error message "pg_config executable not found" is fixed with:
 # sudo apt install libpq-dev python3-dev
