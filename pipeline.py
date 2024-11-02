@@ -7,6 +7,8 @@ import os
 import ics
 from typing import Dict, List, Optional
 from config import commercial_llm_name, temperature
+from dotenv import load_dotenv
+load_dotenv()
 
 class TaskTimeEstimator:
     def __init__(self, history_file: str = 'task_history.json'):
