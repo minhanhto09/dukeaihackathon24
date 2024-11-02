@@ -90,7 +90,8 @@ class AcademicAdaptiveScheduler:
             Previous Task Completion Rate: {previous_completion}
             User Constraints: {constraints}
             
-            Generate an optimized daily schedule that:
+            Generate an optimized daily schedule without altering the existing time blocks in the Calendar Events:
+
             1. Prioritizes upcoming deadlines and exams
             2. Allocates preparation time based on historical completion patterns
             3. Balances academic workload with health goals
@@ -102,7 +103,6 @@ class AcademicAdaptiveScheduler:
             1. Recommended time slots
             2. Expected duration based on historical data
             3. Priority level
-            4. Break intervals
             5. Alternative slots if the task takes longer
             
             Provide the schedule in JSON format with detailed time slots and task information.
