@@ -98,6 +98,7 @@ class AcademicAdaptiveScheduler:
             4. Includes buffer time for tasks that historically take longer
             5. Suggests breaks and study intervals based on task complexity
             6. Adapts to energy levels from health data
+            7. Ensure that a healthy sleep pattern is maintained based on the health data.
             
             For each academic task, provide:
             1. Recommended time slots
@@ -229,7 +230,7 @@ if __name__ == "__main__":
     schedule = scheduler.generate_schedule(
         ics_file_path='data/calendar.ics',
         date=today,
-        health_data=health_data
+        health_data='data/health.json'
     )
     
     # After task completion, update actual time taken
