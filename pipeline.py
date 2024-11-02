@@ -20,14 +20,17 @@ class TaskTimeEstimator:
         """Load historical task completion times"""
         if os.path.exists(self.history_file):
             with open(self.history_file, 'r') as f:
-                return json.load(f)
-        return {
-            'homework': {},
-            'exam_prep': {},
-            'presentation': {},
-            'project': {}
-        }
-    
+                task_history = json.load(f)
+        else:
+            task_history = {}
+
+        # Ensure all expected task types exist in the dictionary
+        for task_type in ['homework', 'homework_due', 'exam_prep', 'exam', 'presentation', 'project']:
+            if task_type not in task_history:
+                task_history[task_type] = {}
+
+        return task_history
+
     def _save_history(self):
         """Save updated task history"""
         with open(self.history_file, 'w') as f:
@@ -119,12 +122,13 @@ class AcademicAdaptiveScheduler:
             events.append({
                 'name': event.name,
                 'type': event_type,
-                'start': event.begin.datetime,
-                'end': event.end.datetime,
+                'start': event.begin.datetime.isoformat(),  # Convert to ISO string
+                'end': event.end.datetime.isoformat(),      # Convert to ISO string
                 'description': event.description,
                 'is_deadline': event_type in ['homework_due', 'exam', 'presentation']
             })
         return events
+
     
     def _classify_academic_event(self, event_name: str) -> str:
         """Classify event type based on name/description"""
@@ -166,10 +170,10 @@ class AcademicAdaptiveScheduler:
         start_of_week = timezone.localize(date - timedelta(days=date.weekday()))
         end_of_week = start_of_week + timedelta(days=6)
         
-        # Filter and organize deadlines
+        # Convert event['start'] back to datetime for comparison
         deadlines = [
             event for event in calendar_events 
-            if event['is_deadline'] and start_of_week <= event['start'] <= end_of_week
+            if event['is_deadline'] and start_of_week <= datetime.fromisoformat(event['start']) <= end_of_week
         ]
         
         # Get time estimates for deadline tasks
@@ -187,7 +191,7 @@ class AcademicAdaptiveScheduler:
             "deadlines": json.dumps(deadlines),
             "task_estimates": json.dumps(task_estimates),
             "health_data": json.dumps(health_data),
-            "previous_completion": json.dumps(self.analyze_task_completion(None)),
+            "previous_completion": json.dumps(self.time_estimator.task_history),
             "constraints": json.dumps(constraints if constraints else {})
         })
         
