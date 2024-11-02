@@ -13,8 +13,8 @@
 # Create virtual environment directory:
 repo_dir=$(git rev-parse --show-toplevel)
 path_to_all_environments=$repo_dir"/environments"
-path_to_this_environment=$path_to_all_environments"/env_chessgpt"
-path_to_env_requirements=$repo_dir"/requirements/"
+path_to_this_environment=$path_to_all_environments"/env_hackathon"
+path_to_env_requirements=$repo_dir
 
 mkdir -p $path_to_all_environments
 
