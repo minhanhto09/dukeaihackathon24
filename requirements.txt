@@ -3,5 +3,5 @@ langchain-chroma==0.1.2
 langchain-community
 google-generativeai
 numpy
-
+langchain_google_genai
 ics
