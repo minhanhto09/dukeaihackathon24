@@ -90,17 +90,16 @@ class AcademicAdaptiveScheduler:
             Previous Task Completion Rate: {previous_completion}
             User Constraints: {constraints}
             
-            Generate an optimized daily schedule without altering the existing time blocks in the Calendar Events:
-
-            1. Prioritizes upcoming deadlines and exams
-            2. Allocates preparation time based on historical completion patterns
-            3. Balances academic workload with health goals
-            4. Includes buffer time for tasks that historically take longer
-            5. Suggests breaks and study intervals based on task complexity
-            6. Adapts to energy levels from health data
-            7. Ensure that a healthy sleep pattern is maintained based on the health data.
+            Generate an optimized daily schedule for the week of November 3 to November 10 (for days without Health Data). Do not alter any existing time blocks from Calendar Events.
             
-            For each academic task, provide:
+            1. Prioritizes upcoming deadlines
+            2. Allocates preparation time based on priority level and energy level
+            3. Balances academic workload by understanding health and lifestyle patterns from Health Data
+            4. Includes buffer time for tasks that historically take longer
+            5. Adapts to energy levels from health data
+            6. Ensure that a healthy sleep pattern is maintained based on the health data.
+            
+            For each task, provide:
             1. Recommended time slots
             2. Expected duration based on historical data
             3. Priority level
@@ -218,13 +217,6 @@ if __name__ == "__main__":
     
     # Generate schedule for current week
     today = datetime.now()
-    
-    # Sample health data
-    health_data = {
-        "sleep_hours": 7,
-        "energy_level": "medium",
-        "stress_level": "moderate"
-    }
     
     # Generate schedule
     schedule = scheduler.generate_schedule(
