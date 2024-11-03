@@ -2,9 +2,9 @@
 
 ![Alt text for the image](images/icon.png)
 
-PeakPlanner is a smart scheduling solution that uses advanced language model (LLM) capabilities to create an optimized work and study plan tailored to your health and productivity rhythms. By analyzing personal metrics such as sleep quality, energy levels, menstrual cycles, and productivity patterns, PeakPlanner schedules your most critical tasks during times when you’re naturally at your best. This approach eliminates the need for manual planning while ensuring high-priority deadlines are met without sacrificing your well-being.
+PeakPlanner is a smart scheduling tool that helps you plan work and study tasks around your health and productivity. By analyzing data like your sleep, energy levels, menstrual cycles, and productivity patterns, PeakPlanner automatically schedules your important tasks at times when you’re at your best. This way, you don’t need to plan your week manually, but you’ll still meet your high-priority deadlines without sacrificing well-being.
 
-Designed for convenience, PeakPlanner takes the work out of planning. Rather than manually adding tasks or adjusting time blocks to juggle multiple deadlines, the LLM model intelligently organizes your schedule with minimal effort on your part. Simply input your deadlines, and PeakPlanner takes care of the rest—dynamically adapting to prioritize rest on low-energy days and reserving your most productive hours for important tasks. With PeakPlanner, you can effortlessly stay on top of your priorities, enjoying a balanced, productive lifestyle without the hassle of manual planning.
+With PeakPlanner, managing your schedule is effortless. Instead of manually adding tasks or adjusting time blocks to handle multiple deadlines, PeakPlanner organizes everything for you. Just enter your deadlines, and PeakPlanner takes care of the rest—it even prioritizes rest on low-energy days and assigns your most productive times for key tasks. Enjoy staying on top of your priorities with a balanced, productive routine, without the hassle of manual planning.
 
 ## Key Features
 
