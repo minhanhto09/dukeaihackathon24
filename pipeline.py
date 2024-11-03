@@ -135,13 +135,14 @@ class AcademicAdaptiveScheduler:
         event_name = event_name.lower()
         if any(word in event_name for word in ['homework', 'assignment']):
             return 'homework_due'
-        elif any(word in event_name for word in ['exam', 'test', 'quiz']):
-            return 'exam'
+        elif any(word in event_name for word in ['exam', 'test', 'quiz', 'final']):  # Added 'final'
+            return 'exam'  # Ensures that "Computer Science Exam" is classified as an exam
         elif any(word in event_name for word in ['presentation', 'project']):
             return 'presentation'
         elif any(word in event_name for word in ['class', 'lecture']):
             return 'class'
         return 'other'
+
     
     def get_task_time_estimate(self, task_type: str, subject: str) -> Dict:
         """Get time estimate for a task and prompt user for input"""
@@ -218,24 +219,17 @@ if __name__ == "__main__":
     # Generate schedule for current week
     today = datetime.now()
     
-    # Sample health data
-    health_data = {
-        "sleep_hours": 7,
-        "energy_level": "medium",
-        "stress_level": "moderate"
-    }
-    
     # Generate schedule
     schedule = scheduler.generate_schedule(
         ics_file_path='data/calendar.ics',
         date=today,
-        health_data=health_data
+        health_data='data/health2.json'
     )
     
-    # After task completion, update actual time taken
-    scheduler.update_task_completion(
-        task_type='homework',
-        subject='Mathematics',
-        estimated_time=4.0,
-        actual_time=6.0
-    )
+    # # After task completion, update actual time taken
+    # scheduler.update_task_completion(
+    #     task_type='homework',
+    #     subject='Mathematics',
+    #     estimated_time=4.0,
+    #     actual_time=6.0
+    # )
