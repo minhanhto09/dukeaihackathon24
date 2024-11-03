@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/css">
+    body { background-color: #2b4765; } 
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
+    span.s1 {font-kerning: none}
+    .title-container { display: flex; align-items: center; } 
+    .title { font-family: 'Abril Fatface', serif; font-size: 30px; color: #FFF; margin-left: 10px; } 
+    .description, .file-input-label { font-family: 'Nunito', sans-serif; font-size: 12px; color: #FFF; margin-top: 5px; }
+    .credits { font-family: 'Nunito', sans-serif; font-size: 6.5px; color: #FFF; margin-top: 5px; }
+    .icon { height: 48px; width: auto; } 
+    .optimize-button {
+      background-color: white; 
+      color: #2b4765; 
+      border: none; 
+      padding: 8px 12px; 
+      font-family: 'Nunito', sans-serif; 
+      font-size: 12px; 
+      cursor: pointer; 
+      margin-top: 10px; 
+      border-radius: 5px; 
+      transition: background-color 0.3s, color 0.3s; 
+    }
+    .optimize-button:hover {
+      background-color: #e0e0e0; 
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="title-container">
+    <img src="icon.png" alt="Icon" class="icon"> 
+    <div class="title">PeakPlanner</div>
+  </div>
+  
+  <div class="description">Synchronizes your day-to-day planning with biometric wellness data with the help of AI.</div>
+  
+  <br><br>
+  
+  <label class="file-input-label" for="calendarFile">Input calendar file here (.ics):</label>
+  <input type="file" id="calendarFile" accept=".ics">
+  
+  <br><br>
+
+  <label class="file-input-label" for="healthFile">Input health file here (.csv):</label>
+  <input type="file" id="healthFile" accept=".csv">
+
+  <br><br>
+
+  <button class="optimize-button" onclick="downloadICS()">Optimize Schedule with AI</button>
+
+  <br>
+
+  <div class="description">Press the button above to generate an AI-optimized calendar file (.ics) for download.</div>
+
+  <br><br>
+
+  <div class="credits">PeakPlanner was developed by Sayali Pingle, Minh Anh To, and Jonathan Hui.</div>
+
+  <script>
+    function downloadICS() {
+      const icsContent = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Your Organization//Your Product//EN\nCALSCALE:GREGORIAN\nEND:VCALENDAR";
+      const blob = new Blob([icsContent], { type: 'text/calendar' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'OptimizedSchedule.ics';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 0);
+    }
+  </script>
+
+</body>
+</html>
