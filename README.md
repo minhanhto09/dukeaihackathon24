@@ -16,6 +16,12 @@ PeakPlanner intelligently integrates both health data (e.g., sleep, productivity
 
 Each day, PeakPlanner prompts you to log task completion, allowing it to track your habits and time spent. This feedback loop helps refine its suggestions, enabling smarter adjustments based on your real-world performance and fostering better time management habits.
 
+## How To Use
+
+With a simple web extension, PeakPlanner can be seamlessly integrated into your existing calendar, making the optimization process smooth and intuitive. Simply add your calendar and sync your health data, and you’ll be able to view your optimized schedule directly within your preferred calendar interface. This integration ensures that your most productive schedule is always just a click away.
+
+![Alt text for the image](images/PeakPlanner.png)
+
 ## Future Enhancements
 
 ### Advanced Health Data Integration
