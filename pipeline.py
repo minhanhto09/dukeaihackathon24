@@ -90,15 +90,26 @@ class AcademicAdaptiveScheduler:
             Previous Task Completion Rate: {previous_completion}
             User Constraints: {constraints}
             
-            Generate an optimized daily schedule for the week of November 3 to November 10 (for days without Health Data). Do not alter any existing time blocks from Calendar Events.
+            # Generate an optimized daily schedule for the week of November 3 to November 10 (for days without Health Data). Do not alter any existing time blocks from Calendar Events.
             
-            1. Prioritizes upcoming deadlines
-            2. Allocates preparation time based on priority level and energy level
-            3. Balances academic workload by understanding health and lifestyle patterns from Health Data
-            4. Includes buffer time for tasks that historically take longer
-            5. Adapts to energy levels from health data
-            6. Ensure that a healthy sleep pattern is maintained based on the health data.
+            # 1. Prioritizes upcoming deadlines
+            # 2. Allocates preparation time only for the deadline task, based on priority level and energy level
+            # 3. Balances academic workload by understanding health and lifestyle patterns from Health Data
+            # 4. Includes buffer time for tasks that historically take longer
+            # 5. Adapts to energy levels from health data
+            # 6. Ensure that a healthy sleep pattern is maintained based on the health data.
             
+            Generate an optimized daily schedule for the week of November 3 to November 10 (for days without Health Data) without modifying any existing time blocks in Calendar Events.
+
+            The schedule should:
+
+            1. Prioritize upcoming deadlines.
+            2. Allocate preparation time solely for homeworks and exams. Don't allocate time to prepare for a class.
+            3. Balance academic workload, informed by lifestyle patterns inferred from available Health Data.
+            4. Include buffer time for tasks that historically require additional time.
+            5. Adapt task timing to predicted energy levels from Health Data.
+            6. Ensure a healthy sleep pattern and normal eating time is maintained based on insights from Health Data.
+
             For each task, provide:
             1. Recommended time slots
             2. Expected duration based on historical data
@@ -125,7 +136,7 @@ class AcademicAdaptiveScheduler:
                 'start': event.begin.datetime.isoformat(),  # Convert to ISO string
                 'end': event.end.datetime.isoformat(),      # Convert to ISO string
                 'description': event.description,
-                'is_deadline': event_type in ['homework_due', 'exam', 'presentation']
+                'is_deadline': event_type in ['homework_due', 'exam'] #, 'presentation']
             })
         return events
 
@@ -133,16 +144,15 @@ class AcademicAdaptiveScheduler:
     def _classify_academic_event(self, event_name: str) -> str:
         """Classify event type based on name/description"""
         event_name = event_name.lower()
-        if any(word in event_name for word in ['homework', 'assignment']):
+        if any(word in event_name for word in ['exam', 'test', 'quiz', 'final']) and "deadline" in event_name: 
+            return 'exam'
+        elif any(word in event_name for word in ['homework', 'assignment']):
             return 'homework_due'
-        elif any(word in event_name for word in ['exam', 'test', 'quiz', 'final']):  # Added 'final'
-            return 'exam'  # Ensures that "Computer Science Exam" is classified as an exam
         elif any(word in event_name for word in ['presentation', 'project']):
             return 'presentation'
         elif any(word in event_name for word in ['class', 'lecture']):
             return 'class'
         return 'other'
-
     
     def get_task_time_estimate(self, task_type: str, subject: str) -> Dict:
         """Get time estimate for a task and prompt user for input"""
