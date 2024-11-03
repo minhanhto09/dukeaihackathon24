@@ -223,4 +223,4 @@ if __name__ == "__main__":
     schedule = scheduler.generate_schedule(
         ics_file_path='data/calendar.ics',
         date=today,
-        health_data='data/health2.json'
+        health_data='data/health2.json')
