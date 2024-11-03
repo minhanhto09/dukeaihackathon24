@@ -1,6 +1,6 @@
 # LLM-Based Schedule Optimizer - PeakPlanner
 
-![Alt text for the image](images/icon.png)
+![Alt text for the image](images/coloricon.png)
 
 PeakPlanner is a smart scheduling tool that helps you plan work and study tasks around your health and productivity. By analyzing data like your sleep, energy levels, menstrual cycles, and productivity patterns, PeakPlanner automatically schedules your important tasks at times when you’re at your best. This way, you don’t need to plan your week manually, but you’ll still meet your high-priority deadlines without sacrificing well-being.
 
