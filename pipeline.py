@@ -90,31 +90,22 @@ class AcademicAdaptiveScheduler:
             Previous Task Completion Rate: {previous_completion}
             User Constraints: {constraints}
             
-            # Generate an optimized daily schedule for the week of November 3 to November 10 (for days without Health Data). Do not alter any existing time blocks from Calendar Events.
-            
-            # 1. Prioritizes upcoming deadlines
-            # 2. Allocates preparation time only for the deadline task, based on priority level and energy level
-            # 3. Balances academic workload by understanding health and lifestyle patterns from Health Data
-            # 4. Includes buffer time for tasks that historically take longer
-            # 5. Adapts to energy levels from health data
-            # 6. Ensure that a healthy sleep pattern is maintained based on the health data.
-            
             Generate an optimized daily schedule for the week of November 3 to November 10 (for days without Health Data) without modifying any existing time blocks in Calendar Events.
 
             The schedule should:
 
             1. Prioritize upcoming deadlines.
-            2. Allocate preparation time solely for homeworks and exams. Don't allocate time to prepare for a class.
-            3. Balance academic workload, informed by lifestyle patterns inferred from available Health Data.
+            2. Suggest preparation time mainly for homeworks and exams. Don't suggest preparation time for a class or to prepare for a class.
+            3. Balance academic workload, informed by energy level patterns inferred from available Health Data.
             4. Include buffer time for tasks that historically require additional time.
             5. Adapt task timing to predicted energy levels from Health Data.
-            6. Ensure a healthy sleep pattern and normal eating time is maintained based on insights from Health Data.
+            6. Ensure a reasonable sleep pattern and normal eating time.
 
             For each task, provide:
-            1. Recommended time slots
-            2. Expected duration based on historical data
-            3. Priority level
-            5. Alternative slots if the task takes longer
+            1. Recommended time slots.
+            2. Expected duration based on historical data.
+            3. Priority level.
+            5. Alternative slots if the task takes longer than needed.
             
             Provide the schedule in JSON format with detailed time slots and task information.
             """
@@ -138,6 +129,7 @@ class AcademicAdaptiveScheduler:
                 'description': event.description,
                 'is_deadline': event_type in ['homework_due', 'exam'] #, 'presentation']
             })
+        print(f"Event: {event.name}, is_deadline: {event_type in ['homework_due', 'exam']}")
         return events
 
     
@@ -186,7 +178,8 @@ class AcademicAdaptiveScheduler:
             event for event in calendar_events 
             if event['is_deadline'] and start_of_week <= datetime.fromisoformat(event['start']) <= end_of_week
         ]
-        
+        print("Deadlines for the week:", [event['name'] for event in deadlines])
+
         # Get time estimates for deadline tasks
         task_estimates = []
         for deadline in deadlines:
