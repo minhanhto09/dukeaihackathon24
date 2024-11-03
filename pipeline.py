@@ -90,16 +90,16 @@ class AcademicAdaptiveScheduler:
             Previous Task Completion Rate: {previous_completion}
             User Constraints: {constraints}
             
-            Generate an optimized daily schedule for the week of November 3 to November 10 (for days without Health Data) without modifying any existing time blocks in Calendar Events.
+            Generate an optimized daily schedule for the week of November 3 to November 10 (for days without Health Data) without changing any existing time blocks in Calendar Events.
 
             The schedule should:
 
-            1. Prioritize upcoming deadlines.
-            2. Suggest preparation time mainly for homeworks and exams. Don't suggest preparation time for a class or to prepare for a class.
+            1. Incorporate all existing fixed events.
+            2. Add preparation time blocks specifically for homework and exams.
             3. Balance academic workload, informed by energy level patterns inferred from available Health Data.
-            4. Include buffer time for tasks that historically require additional time.
+            4. Include buffer time for tasks that typically require extra time.
             5. Adapt task timing to predicted energy levels from Health Data.
-            6. Ensure a reasonable sleep pattern and normal eating time.
+    
 
             For each task, provide:
             1. Recommended time slots.
@@ -136,7 +136,7 @@ class AcademicAdaptiveScheduler:
     def _classify_academic_event(self, event_name: str) -> str:
         """Classify event type based on name/description"""
         event_name = event_name.lower()
-        if any(word in event_name for word in ['exam', 'test', 'quiz', 'final']) and "deadline" in event_name: 
+        if any(word in event_name for word in ['exam', 'test', 'quiz', 'final']): 
             return 'exam'
         elif any(word in event_name for word in ['homework', 'assignment']):
             return 'homework_due'
