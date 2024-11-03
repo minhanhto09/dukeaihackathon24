@@ -1,27 +1,31 @@
 # LLM-Based Schedule Optimizer - PeakPlanner
 
-PeakPlanner is an intelligent system designed to optimize your study and work schedules based on your personal health and productivity data, allowing for more efficient task management and healthier routines.
+![Alt text for the image](images/icon.png)
 
-## Functionality
+PeakPlanner is a smart scheduling solution that uses advanced language model (LLM) capabilities to create an optimized work and study plan tailored to your health and productivity rhythms. By analyzing personal metrics such as sleep quality, energy levels, menstrual cycles, and productivity patterns, PeakPlanner schedules your most critical tasks during times when you’re naturally at your best. This approach eliminates the need for manual planning while ensuring high-priority deadlines are met without sacrificing your well-being.
 
-### Time Block Recommendations:
+Designed for convenience, PeakPlanner takes the work out of planning. Rather than manually adding tasks or adjusting time blocks to juggle multiple deadlines, the LLM model intelligently organizes your schedule with minimal effort on your part. Simply input your deadlines, and PeakPlanner takes care of the rest—dynamically adapting to prioritize rest on low-energy days and reserving your most productive hours for important tasks. With PeakPlanner, you can effortlessly stay on top of your priorities, enjoying a balanced, productive lifestyle without the hassle of manual planning.
+
+## Key Features
+
+### Optimal Time Block Suggestions
     
-Using both health and schedule data, the LLM suggests time blocks for completing tasks based on the user’s condition and productivity levels. For high-priority deadlines, it ensures sufficient time allocation on optimal days to prevent last-minute cramming.
-        
-    Example: If a user needs 5 hours for homework on a particular Thursday and 10 hours to prepare for an exam, the LLM will schedule study sessions in alignment with the user's “optimal” state for focus and productivity.
+PeakPlanner intelligently integrates both health data (e.g., sleep, productivity, menstrual cycles, energy levels, etc) and schedule data (e.g., deadlines, fixed events) to suggest the best time blocks for high-priority tasks. The system aligns important deadlines with times when you are naturally more alert and focused, preventing last-minute stress and maximizing efficiency.
 
 ### Task Tracking and Habit Formation:
 
-At the end of each day, the user can log their task completion. This feedback helps the LLM monitor time spent on each task and adjust future recommendations based on the user's performance.
+Each day, PeakPlanner prompts you to log task completion, allowing it to track your habits and time spent. This feedback loop helps refine its suggestions, enabling smarter adjustments based on your real-world performance and fostering better time management habits.
 
 ## Future Enhancements
 
-### Enhanced Health Data Tracking:
+### Advanced Health Data Integration
 
-Integrate additional health metrics like exercise duration and physical activity data.
+Add tracking for more health metrics, such as exercise routines and physical activity levels, to provide even more tailored scheduling insights.
 
-# Comprehensive Scheduling Options:
-Add scheduling for local events, gym sessions, and meditation blocks.
+### Expanded Scheduling Options
 
-# Peak Productivity Predictions:
-Develop functionality to identify and suggest time frames when the user is likely to be most productive.
+Integrate with local event data, along with gym sessions and meditation blocks, for a well-rounded approach to personal time management.
+
+### Peak Productivity Insights
+
+Introduce features to predict and highlight peak productivity windows, allowing you to plan high-priority work around your most effective times.
