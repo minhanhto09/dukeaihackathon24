@@ -133,7 +133,7 @@ class AcademicAdaptiveScheduler:
     def _classify_academic_event(self, event_name: str) -> str:
         """Classify event type based on name/description"""
         event_name = event_name.lower()
-        if any(word in event_name for word in ['homework', 'assignment', 'hw']):
+        if any(word in event_name for word in ['homework', 'assignment']):
             return 'homework_due'
         elif any(word in event_name for word in ['exam', 'test', 'quiz']):
             return 'exam'
