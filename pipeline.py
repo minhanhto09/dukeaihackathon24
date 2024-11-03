@@ -108,6 +108,7 @@ class AcademicAdaptiveScheduler:
             5. Alternative slots if the task takes longer than needed.
             
             Provide the schedule in JSON format with detailed time slots and task information.
+            The Final Response should be just the Response JSON file which I can further convert to ics file.
             """
         )
         
@@ -200,7 +201,7 @@ class AcademicAdaptiveScheduler:
         })
         
         # Debugging: print the raw response
-        print("Schedule Response:", schedule_response)  # Print to check the content
+        # print("Schedule Response:", schedule_response)  # Print to check the content
 
         if not schedule_response:
             print("Error: The LLM returned an empty response.")
